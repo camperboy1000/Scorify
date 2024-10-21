@@ -1,0 +1,16 @@
+name: Scorify Frontend Docker Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build the Scorify frontend Docker image
+      run: docker build . --file Dockerfile.frontend --tag scorify-frontend:$(date +%s)
