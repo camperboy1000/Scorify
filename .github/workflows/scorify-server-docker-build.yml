@@ -1,0 +1,16 @@
+name: Scorify Server Docker Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Build the Scorify server Docker image
+      run: docker build . --file Dockerfile.scorify --tag scorify-server:$(date +%s)
